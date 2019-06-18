@@ -1,6 +1,8 @@
 package com.lambdaschool.zoos.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "zoo")
@@ -11,6 +13,11 @@ public class Zoo
 	private long zooid;
 
 	private String zooname;
+
+	@ManyToMany
+	@JoinTable(name = "zooanimals", joinColumns = {@JoinColumn(name = "zooid")},
+				inverseJoinColumns = {@JoinColumn(name = "animalid")})
+	private List<Animal> animals = new ArrayList<>();
 
 	public Zoo()
 	{

@@ -15,11 +15,6 @@ public class Telephone
 	private String phonetype;
 	private String phonenumber;
 
-	@ManyToMany
-	@JoinTable(name = "animal", joinColumns = {@JoinColumn(name = "phoneid")},
-				inverseJoinColumns = {@JoinColumn(name = "zooid")})
-	private List<Zoo> zoos = new ArrayList<>();
-
 	public Telephone()
 	{
 	}
@@ -52,15 +47,5 @@ public class Telephone
 	public void setPhonenumber(String phonenumber)
 	{
 		this.phonenumber = phonenumber;
-	}
-
-	public List<Zoo> getZoos()
-	{
-		return zoos;
-	}
-
-	public void setZoos(List<Zoo> zoos)
-	{
-		this.zoos = zoos;
 	}
 }
