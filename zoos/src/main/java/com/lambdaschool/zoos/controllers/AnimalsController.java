@@ -2,6 +2,7 @@ package com.lambdaschool.zoos.controllers;
 
 import com.lambdaschool.zoos.services.AnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,6 @@ public class AnimalsController
 	@GetMapping(value = "/count", produces = {"application/json"})
 	public ResponseEntity<?> getAnimalsCountWithZoos()
 	{
-		// Finish
+		return new ResponseEntity<>(animalService.getAnimalsWithZooCount(), HttpStatus.OK);
 	}
-
 }
