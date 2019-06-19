@@ -1,5 +1,7 @@
 package com.lambdaschool.zoos.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +16,11 @@ public class Telephone
 
 	private String phonetype;
 	private String phonenumber;
+
+	@ManyToOne
+	@JoinColumn(name = "zooid") // Creates a foreign key
+	@JsonIgnoreProperties({"animals", "telephone"})
+	private Zoo zoo;
 
 	public Telephone()
 	{
@@ -47,5 +54,15 @@ public class Telephone
 	public void setPhonenumber(String phonenumber)
 	{
 		this.phonenumber = phonenumber;
+	}
+
+	public Zoo getZoo()
+	{
+		return zoo;
+	}
+
+	public void setZoo(Zoo zoo)
+	{
+		this.zoo = zoo;
 	}
 }
